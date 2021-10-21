@@ -26,7 +26,7 @@ pipenv install
 pipenv shell
 ```
 
-## scripts
+## Scripts
 
 Documentation on how to run the scripts is found below. Before running any of the scripts, replace the values
 of `EXABEL_API_KEY` and `EXABEL_NAMESPACE` in the `.env` file with the API key and namespace you have been provided by Exabel.
@@ -44,7 +44,7 @@ And on Linux and MacOS:
 ./scripts/sh/<script>.sh
 ```
 
-### upload_data
+### `upload_data.ps1` / `upload_data.sh`
 
 This script uploads the following to the Exabel platform:
 
@@ -54,9 +54,9 @@ This script uploads the following to the Exabel platform:
 
 The script can also be run "line by line" by running each line in the root directory of the project.
 
-## delete_data
+### `delete_data.ps1` / `delete_data.sh`
 
-To clean up the resources created, run this script.
+To delete the resources created, run this script.
 
 ## Optional scripts
 ### create_data.py
