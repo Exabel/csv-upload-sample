@@ -31,6 +31,8 @@ pipenv shell
 Documentation on how to run the scripts is found below. Before running any of the scripts, replace the values
 of `EXABEL_API_KEY` and `EXABEL_NAMESPACE` in the `.env` file with the API key and namespace you have been provided by Exabel.
 
+In a production environment, you will want to store the API key in a secure location and load it to the environment variables before execution.
+
 The sample scripts are provided in the `scripts` directory in two versions. `scripts/sh` and `scripts/ps1`.
 On Linux and MacOS use the `.sh` files, and on Windows, use the `.ps1` files.
 

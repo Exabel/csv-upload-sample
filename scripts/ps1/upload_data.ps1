@@ -4,8 +4,11 @@ $dir = Split-Path $scriptpath
 Push-Location (Join-Path $dir ".." "..")
 
 # Set environment variables from environment file
-# In a production setup this should be set ahead of running any script
+# In a production setup the API key should be read from a secure location set ahead of running any script
 Get-Content ".env" | foreach {$e='$Env:' + $_; Invoke-Expression $e}
+
+# API key and namespace can be given explicitly through --api-key and --namespace parameters
+# They can also be given implicitly using the environment variables EXABEL_API_KEY and EXABEL_NAMESPACE
 
 # Upload entities
 python -m exabel_data_sdk.scripts.load_entities_from_csv  `
@@ -15,14 +18,12 @@ python -m exabel_data_sdk.scripts.load_entities_from_csv  `
 
 # Upload relationships
 python -m exabel_data_sdk.scripts.load_relationships_from_csv  `
-    --api-key="$EXABEL_API_KEY" --namespace="$EXABEL_NAMESPACE" `
     --filename="./resources/data/relationships/HAS_BRAND.csv" `
     --entity_from_column="factset_identifier" --entity_to_column="brand" `
     --relationship_type="HAS_BRAND" --description_column="description"
 
 # Upload time series
 python -m exabel_data_sdk.scripts.load_time_series_from_csv  `
-    --api-key="$EXABEL_API_KEY" --namespace="$EXABEL_NAMESPACE" `
     --filename="./resources/data/time_series/brand_time_series.csv" `
     --create_missing_signals
 
