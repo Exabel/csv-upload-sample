@@ -3,8 +3,9 @@ $scriptpath = $MyInvocation.MyCommand.Path
 $dir = Split-Path $scriptpath
 Push-Location (Join-Path $dir ".." "..")
 
-# Set variables from environment file
-Get-Content ".env" | foreach {$e="$" + $_; Invoke-Expression $e}
+# Set environment variables from environment file
+# In a production setup this should be set ahead of running any script
+Get-Content ".env" | foreach {$e='$Env:' + $_; Invoke-Expression $e}
 
 # Upload entities
 python -m exabel_data_sdk.scripts.load_entities_from_csv  `

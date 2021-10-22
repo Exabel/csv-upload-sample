@@ -6,8 +6,9 @@ set -euf
 SCRIPTPATH="$(dirname "$0")"
 cd $SCRIPTPATH/../..
 
-# Set variables from environment file
-source ./.env
+# Set environment variables from environment file
+# In a production setup this should be set ahead of running any script
+source <(awk '{print "export " $0}' ./.env)
 
 # Upload entities
 python -m exabel_data_sdk.scripts.load_entities_from_csv  \
