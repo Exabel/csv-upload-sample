@@ -3,9 +3,10 @@ $scriptpath = $MyInvocation.MyCommand.Path
 $dir = Split-Path $scriptpath
 Push-Location (Join-Path $dir ".." "..")
 
-# Set environment variables from environment file
+# Set environment variables to be used by the scripts
 # In a production setup the API key should be read from a secure location set ahead of running any script
-Get-Content ".env" | foreach {$e='$Env:' + $_; Invoke-Expression $e}
+$Env:EXABEL_API_KEY="my_api_key"
+$Env:EXABEL_NAMESPACE="my_namespace"
 
 # API key and namespace can be given explicitly through --api-key and --namespace parameters
 # They can also be given implicitly using the environment variables EXABEL_API_KEY and EXABEL_NAMESPACE
