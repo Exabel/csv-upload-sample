@@ -24,7 +24,7 @@ def get_brownian_time_series(
 
 
 def main():
-    brands: pd.DataFrame = pd.read_csv("./resources/data/entities/brands.csv", sep=";")
+    brands: pd.DataFrame = pd.read_csv("./resources/data/entities/brands.csv")
 
     time_series = []
     for brand in brands.brand.values:
@@ -41,7 +41,6 @@ def main():
 
     pd.concat(time_series).to_csv(
         "./resources/data/time_series/brand_time_series.csv",
-        sep=";",
         quoting=2,
         index=False,
     )

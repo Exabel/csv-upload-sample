@@ -61,10 +61,10 @@ class DeleteData(BaseScript):
 
     def run_script(self, client: ExabelClient, args: argparse.Namespace) -> None:
         brands: pd.DataFrame = pd.read_csv(
-            "./resources/data/entities/brands.csv", sep=";"
+            "./resources/data/entities/brands.csv"
         )
         signals: pd.DataFrame = pd.read_csv(
-            "./resources/data/time_series/brand_time_series.csv", sep=";", nrows=0
+            "./resources/data/time_series/brand_time_series.csv", nrows=0
         ).columns[2:]
         self.delete_signals(
             client=client,

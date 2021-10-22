@@ -3,26 +3,29 @@ $scriptpath = $MyInvocation.MyCommand.Path
 $dir = Split-Path $scriptpath
 Push-Location (Join-Path $dir ".." "..")
 
-# Set variables from environment file
-Get-Content ".env" | foreach {$e="$" + $_; Invoke-Expression $e}
+# Set environment variables to be used by the scripts
+# In a production setup the API key should be read from a secure location set ahead of running any script
+$Env:EXABEL_API_KEY="my_api_key"
+$Env:EXABEL_NAMESPACE="my_namespace"
+
+# API key and namespace can be given explicitly through --api-key and --namespace parameters
+# They can also be given implicitly using the environment variables EXABEL_API_KEY and EXABEL_NAMESPACE
 
 # Upload entities
 python -m exabel_data_sdk.scripts.load_entities_from_csv  `
     --api-key="$EXABEL_API_KEY" --namespace="$EXABEL_NAMESPACE" `
-    --filename="./resources/data/entities/brands.csv" --sep=";" `
+    --filename="./resources/data/entities/brands.csv" `
     --name_column="brand" --description_column="description"
 
 # Upload relationships
 python -m exabel_data_sdk.scripts.load_relationships_from_csv  `
-    --api-key="$EXABEL_API_KEY" --namespace="$EXABEL_NAMESPACE" `
-    --filename="./resources/data/relationships/HAS_BRAND.csv" --sep=";" `
+    --filename="./resources/data/relationships/HAS_BRAND.csv" `
     --entity_from_column="factset_identifier" --entity_to_column="brand" `
     --relationship_type="HAS_BRAND" --description_column="description"
 
 # Upload time series
 python -m exabel_data_sdk.scripts.load_time_series_from_csv  `
-    --api-key="$EXABEL_API_KEY" --namespace="$EXABEL_NAMESPACE" `
-    --filename="./resources/data/time_series/brand_time_series.csv" --sep=";" `
+    --filename="./resources/data/time_series/brand_time_series.csv" `
     --create_missing_signals
 
 Pop-Location
