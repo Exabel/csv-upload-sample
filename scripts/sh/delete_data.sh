@@ -11,5 +11,4 @@ cd $SCRIPTPATH/../..
 source <(awk '{print "export " $0}' ./.env)
 
 # Delete entities, relationships, signals and time series
-python -m scripts.py.delete_data \
-    --api-key="$EXABEL_API_KEY" --namespace="$EXABEL_NAMESPACE"
+python -m scripts.py.delete_data
