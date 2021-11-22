@@ -68,7 +68,7 @@ This script creates geometric brownian movement sample data for the brands in `r
 Usage:
 ```sh
 # In the root directory of the project
-python scripts/py/create_data.py
+python scripts/py/create_time_series_data.py
 ```
 
 # Useful Links
