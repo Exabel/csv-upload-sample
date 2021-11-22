@@ -56,12 +56,17 @@ This script uploads the following to the Exabel platform:
 
 The script can also be run "line by line" by running each line in the root directory of the project.
 
+> **Note:**
+There are multiple ways of uploading point-in-time accurate data, the sample upload scripts also contain
+an example of uploading time series with a fixed offset of days. Please see the
+[Exabel API documentation](https://doc.exabel.com/api/data/timeseries.html) for more information.
+
 ### `delete_data.ps1` / `delete_data.sh`
 
 To delete the resources created, run this script.
 
 ## Optional scripts
-### create_data.py
+### create_time_series_data.py
 
 This script creates geometric brownian movement sample data for the brands in `resources/data/entities/brands.csv`.
 
