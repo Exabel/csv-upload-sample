@@ -53,6 +53,8 @@ This script uploads the following to the Exabel platform:
 1. the brands in `resources/data/entities/brands.csv`
 2. the relationships in `resources/data/relationships/HAS_BRAND.csv`
 3. the time series data points in `resources/data/time_series/brand_time_series.csv`
+4. the time series data points in `resources/data/time_series/brand_time_series_one_day.csv`.
+   This example shows how the usual daily/weekly/monthly incremental load can be performed with the current time set as known time.
 
 The script can also be run "line by line" by running each line in the root directory of the project.
 

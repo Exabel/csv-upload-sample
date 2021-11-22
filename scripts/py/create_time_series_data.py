@@ -56,6 +56,18 @@ def main():
         index=False,
     )
 
+    time_series_one_day = time_series_data_frame.copy()
+    time_series_one_day["date"] = time_series_one_day["date"] + pd.DateOffset(days=1)
+    time_series_one_day["sample_revenue"] = time_series_one_day["sample_revenue"] + 10
+    time_series_one_day = time_series_one_day[
+        time_series_one_day["date"] == time_series_one_day["date"].max()
+    ]
+    time_series_one_day.drop(columns=["known_time"]).to_csv(
+        "./resources/data/time_series/brand_time_series_one_day.csv",
+        quoting=2,
+        index=False,
+    )
+
 
 if __name__ == "__main__":
     np.random.seed(1)
