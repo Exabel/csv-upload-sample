@@ -29,7 +29,7 @@ pipenv shell
 ## Scripts
 
 Documentation on how to run the scripts is found below. Before running any of the scripts, replace the values
-of `EXABEL_API_KEY` and `EXABEL_NAMESPACE` in the `.env` file with the API key and namespace you have been provided by Exabel.
+of `EXABEL_API_KEY` and `EXABEL_NAMESPACE` in the `upload_data.sh` / `upload_data.ps1` file with the API key and namespace you have been provided by Exabel.
 
 In a production environment, you will want to store the API key in a secure location and load it to the environment variables before execution.
 
