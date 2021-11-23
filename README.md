@@ -29,7 +29,7 @@ pipenv shell
 ## Scripts
 
 Documentation on how to run the scripts is found below. Before running any of the scripts, replace the values
-of `EXABEL_API_KEY` and `EXABEL_NAMESPACE` in the `.env` file with the API key and namespace you have been provided by Exabel.
+of `EXABEL_API_KEY` and `EXABEL_NAMESPACE` in the `upload_data.sh` / `upload_data.ps1` file with the API key and namespace you have been provided by Exabel.
 
 In a production environment, you will want to store the API key in a secure location and load it to the environment variables before execution.
 
@@ -53,22 +53,29 @@ This script uploads the following to the Exabel platform:
 1. the brands in `resources/data/entities/brands.csv`
 2. the relationships in `resources/data/relationships/HAS_BRAND.csv`
 3. the time series data points in `resources/data/time_series/brand_time_series.csv`
+4. the time series data points in `resources/data/time_series/brand_time_series_one_day.csv`.
+   This example shows how the usual daily/weekly/monthly incremental load can be performed with the current time set as known time.
 
 The script can also be run "line by line" by running each line in the root directory of the project.
+
+> **Note:**
+There are multiple ways of uploading point-in-time accurate data, the sample upload scripts also contain
+an example of uploading time series with a fixed offset of days. Please see the
+[Exabel API documentation](https://doc.exabel.com/api/data/timeseries.html) for more information.
 
 ### `delete_data.ps1` / `delete_data.sh`
 
 To delete the resources created, run this script.
 
 ## Optional scripts
-### create_data.py
+### create_time_series_data.py
 
 This script creates geometric brownian movement sample data for the brands in `resources/data/entities/brands.csv`.
 
 Usage:
 ```sh
 # In the root directory of the project
-python scripts/py/create_data.py
+python scripts/py/create_time_series_data.py
 ```
 
 # Useful Links

@@ -39,8 +39,31 @@ def main():
         next_df = next_df[["brand", "date", signal_name]]
         time_series.append(next_df)
 
-    pd.concat(time_series).to_csv(
+    time_series_data_frame = pd.concat(time_series)
+    time_series_data_frame["known_time"] = time_series_data_frame["date"] + pd.DateOffset(days=1)
+
+    # With known time, for use *without* pit_offset
+    time_series_data_frame.to_csv(
         "./resources/data/time_series/brand_time_series.csv",
+        quoting=2,
+        index=False,
+    )
+
+    # Without known time, for use *with* pit_offset
+    time_series_data_frame.drop(columns=["known_time"]).to_csv(
+        "./resources/data/time_series/brand_time_series_without_known_time.csv",
+        quoting=2,
+        index=False,
+    )
+
+    time_series_one_day = time_series_data_frame.copy()
+    time_series_one_day["date"] = time_series_one_day["date"] + pd.DateOffset(days=1)
+    time_series_one_day["sample_revenue"] = time_series_one_day["sample_revenue"] + 10
+    time_series_one_day = time_series_one_day[
+        time_series_one_day["date"] == time_series_one_day["date"].max()
+    ]
+    time_series_one_day.drop(columns=["known_time"]).to_csv(
+        "./resources/data/time_series/brand_time_series_one_day.csv",
         quoting=2,
         index=False,
     )

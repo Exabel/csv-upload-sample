@@ -23,9 +23,20 @@ python -m exabel_data_sdk.scripts.load_relationships_from_csv  `
     --entity_from_column="factset_identifier" --entity_to_column="brand" `
     --relationship_type="HAS_BRAND" --description_column="description"
 
-# Upload time series
+# Upload time series with known time
 python -m exabel_data_sdk.scripts.load_time_series_from_csv  `
     --filename="./resources/data/time_series/brand_time_series.csv" `
     --create_missing_signals
+
+# Or upload using PiT offset, comment in the following lines
+# and comment out the previous lines
+#python -m exabel_data_sdk.scripts.load_time_series_from_csv  `
+#    --filename="./resources/data/time_series/brand_time_series_without_known_time.csv" `
+#    --pit_offset=1 --create_missing_signals
+
+# Upload time series on a daily/weekly/monthly schedule, setting known time to the current time (upload time)
+python -m exabel_data_sdk.scripts.load_time_series_from_csv  `
+    --filename="./resources/data/time_series/brand_time_series_one_day.csv" `
+    --pit_current_time
 
 Pop-Location
