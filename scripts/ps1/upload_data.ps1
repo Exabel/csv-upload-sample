@@ -33,7 +33,7 @@ python -m exabel_data_sdk.scripts.load_time_series_from_csv  `
 # and comment out the previous lines
 #python -m exabel_data_sdk.scripts.load_time_series_from_csv  `
 #    --filename="./resources/data/time_series/brand_time_series_without_known_time.csv" `
-#    --pit_offset=1 --create_missing_signals
+#    --pit-offset=1 --create-missing-signals
 
 # Upload time series on a daily/weekly/monthly schedule, setting known time to the current time (upload time)
 python -m exabel_data_sdk.scripts.load_time_series_from_csv  `
