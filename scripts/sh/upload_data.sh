@@ -18,18 +18,19 @@ export EXABEL_NAMESPACE="my_namespace"
 python -m exabel_data_sdk.scripts.load_entities_from_csv  \
     --api-key="$EXABEL_API_KEY" --namespace="$EXABEL_NAMESPACE" \
     --filename="./resources/data/entities/brands.csv" \
-    --name_column="brand" --description_column="description"
+    --name-column="brand" --display-name-column="display_name" \
+    --description-column="description"
 
 # Upload relationships, or implicitly
 python -m exabel_data_sdk.scripts.load_relationships_from_csv  \
     --filename="./resources/data/relationships/HAS_BRAND.csv" \
-    --entity_from_column="factset_identifier" --entity_to_column="brand" \
-    --relationship_type="HAS_BRAND" --description_column="description"
+    --entity-from-column="factset_identifier" --entity-to-column="brand" \
+    --relationship-type="HAS_BRAND" --description-column="description"
 
 # Upload time series with known time
 python -m exabel_data_sdk.scripts.load_time_series_from_csv  \
     --filename="./resources/data/time_series/brand_time_series.csv" \
-    --create_missing_signals
+    --create-missing-signals
 
 # Or upload using PiT offset, comment in the following lines
 # and comment out the previous lines
@@ -40,4 +41,4 @@ python -m exabel_data_sdk.scripts.load_time_series_from_csv  \
 # Upload time series on a daily/weekly/monthly schedule, setting known time to the current time (upload time)
 python -m exabel_data_sdk.scripts.load_time_series_from_csv  `
     --filename="./resources/data/time_series/brand_time_series_one_day.csv" `
-    --pit_current_time
+    --pit-current-time
