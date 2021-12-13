@@ -1,4 +1,4 @@
-"brand","description"
-"Oil brand","Oil brand of Equinor"
-"Phone brand","Phone brand of Apple"
-"Computer brand","Computer brand of Apple"
+"brand","display_name","description"
+"Oil brand","Oil brand of Equinor","Oil brand of Equinor"
+"Phone brand","Phone brand of Apple","Phone brand of Apple"
+"Computer brand","Computer brand of Apple","Computer brand of Apple"
