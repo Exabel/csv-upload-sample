@@ -17,8 +17,8 @@ export EXABEL_NAMESPACE="my_namespace"
 # Create entity type
 python -m exabel_data_sdk.scripts.create_entity_type \
     --api-key="$EXABEL_API_KEY" \
-		--name="entityTypes/$EXABEL_NAMESPACE.brand" --display-name="brand" \
-		--no-is-associative
+    --name="entityTypes/$EXABEL_NAMESPACE.brand" --display-name="brand" \
+    --no-is-associative
 
 # Upload entities
 python -m exabel_data_sdk.scripts.load_entities_from_csv \
@@ -29,8 +29,8 @@ python -m exabel_data_sdk.scripts.load_entities_from_csv \
 
 # Create relationship type, API key is given implicitly
 python -m exabel_data_sdk.scripts.create_relationship_type \
-		--name="relationshipTypes/$EXABEL_NAMESPACE.HAS_BRAND" \
-		--is-ownership
+    --name="relationshipTypes/$EXABEL_NAMESPACE.HAS_BRAND" \
+    --is-ownership
 
 # Upload relationships, API key is given implicitly
 python -m exabel_data_sdk.scripts.load_relationships_from_csv \
