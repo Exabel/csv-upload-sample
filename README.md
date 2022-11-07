@@ -13,7 +13,7 @@ The data model implemented in this project can be visualized as follows:
 
 ![Exabel data model](./resources/img/data_model.png)
 
-## Installation
+## Installation 
 
 For easy installation of all dependencies, run the following commands in the root directory of the project:
 
@@ -24,6 +24,13 @@ pip install pipenv
 pipenv install
 # Start virtual environment
 pipenv shell
+```
+
+## Updating
+Exabel's package, `exabel-data-sdk`, is evolving. If the dependencies were installed for a while ago, it will be necessary to update it to the newest version:
+```sh
+# Update package exabel-data-sdk
+pipenv update exabel-data-sdk
 ```
 
 ## Scripts
