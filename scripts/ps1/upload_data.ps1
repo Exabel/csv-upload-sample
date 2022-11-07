@@ -51,8 +51,6 @@ python -m exabel_data_sdk.scripts.load_time_series_from_csv  `
     --filename="./resources/data/time_series/brand_time_series_one_day.csv" `
     --pit-current-time
 
-Pop-Location
-
 # The above time series uploading work can be done by module
 # exabel_data_sdk.scripts.load_time_series_from_file with the same parameters
 #
@@ -70,3 +68,5 @@ Pop-Location
 #python -m exabel_data_sdk.scripts.load_time_series_from_file `
 #    --filename="./resources/data/time_series/brand_time_series_one_day.csv" `
 #    --pit-current-time
+
+Pop-Location
